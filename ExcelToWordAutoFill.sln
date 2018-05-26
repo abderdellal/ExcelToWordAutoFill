@@ -5,16 +5,27 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToWordAutoFill", "ExcelToWordAutoFill\ExcelToWordAutoFill.csproj", "{5C369F23-25C9-4AF1-B402-751C60C32B75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{00EAA5D3-65EC-4E86-BC22-88202AA40C45}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{E2EF1820-BF86-4E76-BA3C-2438188AE41C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C369F23-25C9-4AF1-B402-751C60C32B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EAA5D3-65EC-4E86-BC22-88202AA40C45}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{00EAA5D3-65EC-4E86-BC22-88202AA40C45}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{00EAA5D3-65EC-4E86-BC22-88202AA40C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EAA5D3-65EC-4E86-BC22-88202AA40C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2EF1820-BF86-4E76-BA3C-2438188AE41C}.Debug|Any CPU.ActiveCfg = Release
+		{E2EF1820-BF86-4E76-BA3C-2438188AE41C}.Debug|Any CPU.Build.0 = Release
+		{E2EF1820-BF86-4E76-BA3C-2438188AE41C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ExcelToWordAutoFill"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Main Menu -->
+    <system:String x:Key="AddForm">Add a new form model</system:String>
+    <system:String x:Key="AutoFill">Auto fill a form</system:String>
+    <system:String x:Key="FormsList">Forms List</system:String>
+
+
+    <!--Add Form -->
+    <system:String x:Key="FormName">Form Name</system:String>
+    <system:String x:Key="SourceExcelFile">Source Excel file</system:String>
+    <system:String x:Key="formModel">Form template (Word File)</system:String>
+    <system:String x:Key="OutputFolder">Output folder</system:String>
+    <system:String x:Key="Search Column">Search Column</system:String>
+    <system:String x:Key="FirsLine">Table's first line</system:String>
+    <system:String x:Key="FirstLineIsHeader">The first line is the headers</system:String>
+    <system:String x:Key="KeyColumnsPairs">Place holder/Column pairs</system:String>
+    <system:String x:Key="addKeyColumnsPair">Add a place holder/column pair</system:String>
+    <system:String x:Key="autofetch">Auto fetch from headers</system:String>
+    <system:String x:Key="key">Place holder</system:String>
+    <system:String x:Key="Column">Column</system:String>
+    <system:String x:Key="keys">Place holders</system:String>
+    <system:String x:Key="Columns">Columns</system:String>
+    <system:String x:Key="SaveForm">Save form</system:String>
+    <system:String x:Key="ElementsAdded">elements added</system:String>
+
+    <!--Forms List -->
+    <system:String x:Key="Forms">Forms</system:String>
+
+    <!--AutoFill -->
+    <system:String x:Key="SearchFor">Search For</system:String>
+    <system:String x:Key="AutoFillButton">Auto Fill</system:String>
+
+
+</ResourceDictionary>

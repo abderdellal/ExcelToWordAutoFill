@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ExcelToWordAutoFill.Resources"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Main Menu -->
+    <system:String x:Key="AddForm">Ajouter un nouveau formulaire  </system:String>
+    <system:String x:Key="AutoFill">Auto remplissage </system:String>
+    <system:String x:Key="FormsList">Liste des formulaires</system:String>
+
+
+    <!--Add Form -->
+    <system:String x:Key="FormName">Nom du formulaire</system:String>
+    <system:String x:Key="SourceExcelFile">Selectionner un fichier  Excel</system:String>
+    <system:String x:Key="formModel">Formulaire Word</system:String>
+    <system:String x:Key="OutputFolder">Repertoire de sortie</system:String>
+    <system:String x:Key="Search Column">Colonne de recherche </system:String>
+    <system:String x:Key="FirsLine">Première ligne de la able</system:String>
+    <system:String x:Key="FirstLineIsHeader">L'entête est en premiere ligne </system:String>
+    <system:String x:Key="KeyColumnsPairs">paires d'Emplacement réservé /Colonne  </system:String>
+    <system:String x:Key="addKeyColumnsPair">Ajouter une paire  d'Emplacement réservé/colonne </system:String>
+    <system:String x:Key="autofetch">Charger automatiquement de l'entête</system:String>
+    <system:String x:Key="key">Emplacement réservé</system:String>
+    <system:String x:Key="Column">Colonne</system:String>
+    <system:String x:Key="keys">Emplacement réservés</system:String>
+    <system:String x:Key="Columns">Colonnes</system:String>
+    <system:String x:Key="SaveForm">Enregistrer le formulaire </system:String>
+    <system:String x:Key="ElementsAdded">Elements ajouté </system:String>
+
+    <!--Forms List -->
+    <system:String x:Key="Forms">Formulaires</system:String>
+
+    <!--AutoFill -->
+    <system:String x:Key="SearchFor">Rechercher </system:String>
+    <system:String x:Key="AutoFillButton">Valider</system:String>
+    
+    
+</ResourceDictionary>

@@ -4,9 +4,62 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExcelToWordAutoFill"
+        xmlns:Views="clr-namespace:ExcelToWordAutoFill.Views"
+        xmlns:ViewModels="clr-namespace:Logic.ViewModels;assembly=Logic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Personnel Tourisme" WindowState="Maximized" Icon="./group.ico">
+    <Window.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}" />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <!-- DataTemplates to bind Views to ViewModels-->
+            <DataTemplate DataType="{x:Type ViewModels:AddFormViewModel}">
+                <Views:AddFormView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:FillFormViewModel}">
+                <Views:FillFormView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:FormsListViewModel}">
+                <Views:FormsListView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" BorderThickness="2" Margin="0,0,20,0" >
+
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Header="{StaticResource AutoFill}" Command="{Binding changeViewCommand}" CommandParameter="{Binding FillForm, Source={StaticResource Locator}}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="AutoUpload"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="{StaticResource AddForm}" Command="{Binding changeViewCommand}" CommandParameter="{Binding AddForm, Source={StaticResource Locator}}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="PlusCircle" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="{StaticResource FormsList}" Command="{Binding changeViewCommand}" CommandParameter="{Binding FormsList, Source={StaticResource Locator}}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="FormatListBulleted" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+
+
+        <!-- this Content control will change the displayed view according to the SelectedViewModel property in the MainViewModel -->
+
+        <ContentControl x:Name="myMainFrame" Content="{Binding SelectedViewModel}"/>
+
+    </DockPanel>
 </Window>

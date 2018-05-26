@@ -1,0 +1,192 @@
+﻿<UserControl x:Class="ExcelToWordAutoFill.Views.AddFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExcelToWordAutoFill.Views"
+             xmlns:ViewModels="clr-namespace:Logic.ViewModels;assembly=Logic"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DataContext="{Binding Source={StaticResource Locator}, Path=AddForm}"
+             >
+
+    <Grid Margin="40,30,40,20" Grid.Column="0" Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Left" Margin="25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{StaticResource FormName}" Grid.Column="0" Grid.Row="0" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+            <TextBlock Text="{StaticResource SourceExcelFile}" Grid.Column="0" Grid.Row="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+            <TextBlock Text="{StaticResource formModel}" Grid.Column="0" Grid.Row="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+            <TextBlock Text="{StaticResource OutputFolder}" Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+            <TextBlock Text="{StaticResource Search Column}" Grid.Column="0" Grid.Row="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+            <TextBlock Text="{StaticResource FirstLineIsHeader}" Grid.Column="0" Grid.Row="5" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,10,50,10"/>
+
+            <TextBox Text="{Binding Path=form.FormName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="20" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10" />
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <TextBox x:Name="sourceExcelTextBox" Text="{Binding Path=form.sourceExcelFile, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10" />
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Click="Button1_Click">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Folder" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                <TextBox x:Name="formModelTextBox" Text="{Binding Path=form.formModel, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10" />
+                <Button Click="Button2_Click" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Folder" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                <TextBox x:Name="OutputFolderTextBox" Text="{Binding Path=form.OutputFolder, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10" />
+                <Button Click="Button3_Click" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Folder" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <TextBox Text="{Binding Path=stringSearchColumn, ValidatesOnDataErrors=True,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="50" FontSize="20" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10" />
+            <CheckBox IsChecked="{Binding Path=form.firstLineIsHeader}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,10,50,10"/>
+
+
+        </Grid>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+            <Label Content="{StaticResource KeyColumnsPairs}" Grid.Row="0" FontSize="18" FontWeight="Bold" Foreground="RoyalBlue" Margin="25,0,25,10"/>
+
+            <Button  Command="{Binding AutoFetchPairsCommand}"
+                         Content="{StaticResource autofetch}"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                         Grid.Row="1"/>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding addedPairsMessageVisible}">
+                <Label Content="{Binding addedPairs}"  FontSize="12" Foreground="Gray" Margin="10,0,5,10"/>
+                <Label Content="{StaticResource ElementsAdded}"  FontSize="12" Foreground="Gray" Margin="5,0,25,10"/>
+            </StackPanel>
+
+            <Grid x:Name="MyGrid" Visibility="{Binding IsPairsListVisible}" Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid HorizontalAlignment="Stretch" Grid.Row="0">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Margin" Value="5, 0, 7, 0" />
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="95" />
+                        <ColumnDefinition Width="55" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{StaticResource key}" Grid.Column="0" />
+                    <TextBlock Text="{StaticResource Column}" Grid.Column="1" Margin="0, 0, 5, 0" />
+                </Grid>
+                <ListView ItemsSource="{Binding keyColumnPairs}" Grid.Row="1" HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="14" />
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                            <Setter Property="Margin" Value="5, 0, 5, 0" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Grid.Resources>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="95" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Key}" Grid.Column="0" />
+                                <TextBlock Text="{Binding Column}" Grid.Column="1" />
+                                <Button Grid.Column="2"
+                                Command="{Binding Path=DataContext.DeleteKeyColumnPair, ElementName=MyGrid}"
+                                CommandParameter="{Binding}" Height="25">
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="Delete" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="{StaticResource key}" FontSize="12"  Margin="25,5,25,5" Grid.Row="0"/>
+                <Label Content="{StaticResource Column}" FontSize="12"  Margin="25,5,25,5" Grid.Row="1"/>
+
+                <TextBox Text="{Binding Path=keyColumnPair.Key, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="100" FontSize="20" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+                <TextBox Text="{Binding Path=keyColumnPair.Column, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="100" FontSize="20" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+                <Button  Content="{StaticResource addKeyColumnsPair}"
+                         Command="{Binding AddKeyColumnPairCommand}"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                         Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" Margin="0,10"/>
+
+            </Grid>
+
+        </Grid>
+
+        <DockPanel Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+            <Separator  BorderBrush="Gray" BorderThickness="5" DockPanel.Dock="Top" Margin="0,20,0,0"/>
+            <Button  Content="{StaticResource SaveForm}"
+                         Command="{Binding SaveFormCommand}"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                         />
+        </DockPanel>
+    </Grid>
+
+</UserControl>

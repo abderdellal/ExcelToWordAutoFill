@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,13 @@ namespace ExcelToWordAutoFill
     /// </summary>
     public partial class App : Application
     {
+        public App() : base()
+        {
+            AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+            using (var ctx = new Model1())
+            {
+                ctx.Database.CreateIfNotExists();
+            }
+        }
     }
 }
