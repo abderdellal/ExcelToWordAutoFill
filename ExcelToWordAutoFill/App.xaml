@@ -17,7 +17,7 @@
                 <ResourceDictionary>
                     <vm:ViewModelLocator x:Key="Locator"/>
                 </ResourceDictionary>
-                <ResourceDictionary Source="Resources/StringRessourcesFr.xaml" />
+                <ResourceDictionary Source="Resources/StringResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

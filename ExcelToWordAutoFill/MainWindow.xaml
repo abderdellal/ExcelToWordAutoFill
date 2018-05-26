@@ -8,7 +8,7 @@
         xmlns:ViewModels="clr-namespace:Logic.ViewModels;assembly=Logic"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Personnel Tourisme" WindowState="Maximized" Icon="./group.ico">
+        Title="Excel To Word AutoFill" WindowState="Maximized" Icon="./group.ico">
     <Window.DataContext>
         <Binding Path="Main" Source="{StaticResource Locator}" />
     </Window.DataContext>

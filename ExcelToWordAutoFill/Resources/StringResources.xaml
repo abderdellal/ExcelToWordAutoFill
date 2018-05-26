@@ -4,7 +4,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Main Menu -->
-    <system:String x:Key="AddForm">Add a new form model</system:String>
+    <system:String x:Key="AddForm">Add a new form template</system:String>
     <system:String x:Key="AutoFill">Auto fill a form</system:String>
     <system:String x:Key="FormsList">Forms List</system:String>
 
